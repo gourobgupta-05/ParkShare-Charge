@@ -1,30 +1,38 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const slotSchema = new mongoose.Schema({
-  hostId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  propertyType: { type: String, enum: ['Residential', 'Mall'], required: true },
-  title: { type: String, required: true, trim: true },
-  address: { type: String, required: true },
+const SlotSchema = new mongoose.Schema({
+    hostId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Host",
+    required: true
+},
+    propertyType: String,
 
-  location: {
-    type: { type: String, enum: ['Point'], required: true, default: 'Point' },
-    coordinates: { type: [Number], required: true }, // [lng, lat] — GeoJSON order
-  },
+    title: String,
 
-  pricePerHour: { type: Number, required: true, min: 0 },
-  chargerType: { type: String, enum: ['AC', 'DC Fast'], default: 'AC' },
-  isAvailable: { type: Boolean, default: true },
-  rating: { type: Number, default: 0, min: 0, max: 5 },
-  ratingCount: { type: Number, default: 0 },
+    address: String,
 
-  // Only meaningful when propertyType is 'Mall' — used by the Commercial
-  // Mall Operating Hours Guard Worker feature.
-  operatingHours: {
-    open: { type: String, default: '08:00' },
-    close: { type: String, default: '20:00' },
-  },
-}, { timestamps: true });
+    location: {
+        type: {
+            type: String,
+            enum: ["Point"],
+            default: "Point"
+        },
 
-slotSchema.index({ location: '2dsphere' });
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
 
-module.exports = mongoose.model('Slot', slotSchema);
+    pricePerHour: Number,
+
+    chargerType: String,
+
+    isAvailable: Boolean
+
+}, {
+    collection: "slots"
+});
+
+module.exports = mongoose.model("Slot", SlotSchema);
