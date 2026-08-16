@@ -1,0 +1,16 @@
+{
+  "name": "parkshare-tamal-module1-backend",
+  "version": "1.0.0",
+  "description": "Module 1: Real-Time Interactive Geospatial Search Matrix",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0",
+    "mongoose": "^8.5.0"
+  }
+}
