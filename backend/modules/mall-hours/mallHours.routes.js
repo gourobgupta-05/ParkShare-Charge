@@ -1,15 +1,24 @@
 /**
  * Commercial Mall Operating Hours Guard Worker
- * OWNER: Tamal Deb Nath [TDN]  ·  Mounted at /api/mall-hours
+ * MODULE 3  ·  OWNER: Tamal Deb Nath [TDN]  ·  Mounted at /api/mall-hours
  *
- * ⚠️ STUB — Tamal Deb Nath replaces this file with their implementation.
- * Nobody else commits inside this folder.
+ * Requiring this file also starts the background guard worker, which is why no
+ * shared file (server.js, config/cron.js) needs editing to schedule it.
  */
 const router = require('express').Router();
-const ApiError = require('../../utils/ApiError');
+const { authenticate, authorize, optionalAuth } = require('../../middleware/auth');
+const { ROLES } = require('../../shared/constants');
+const ctrl = require('./mallHours.controller');
+const { startMallHoursWorker } = require('./mallHours.worker');
 
-router.use((_req, _res, next) =>
-  next(ApiError.notImplemented('Commercial Mall Operating Hours Guard Worker is not built yet — owner: Tamal Deb Nath'))
-);
+startMallHoursWorker();
+
+router.post('/check', optionalAuth, ctrl.check);
+router.get('/property/:id', optionalAuth, ctrl.getForProperty);
+
+router.get('/my-properties', authenticate, authorize(ROLES.HOST, ROLES.ADMIN), ctrl.myProperties);
+router.patch('/property/:id', authenticate, authorize(ROLES.HOST, ROLES.ADMIN), ctrl.update);
+
+router.post('/sweep', authenticate, authorize(ROLES.ADMIN), ctrl.runSweep);
 
 module.exports = router;
