@@ -6,6 +6,10 @@
  * Render start command:  node backend/server.js
  * ============================================================================
  */
+const dns = require('node:dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
+
 const http = require('http');
 const mongoose = require('mongoose');
 
