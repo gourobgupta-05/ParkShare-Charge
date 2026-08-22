@@ -17,7 +17,7 @@ exports.modules = {
   \************************************************/
 /***/ ((module) => {
 
-eval("\n\n/** @type {import('.')} */\nmodule.exports = Object;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi4vbm9kZV9tb2R1bGVzL2VzLW9iamVjdC1hdG9tcy9pbmRleC5qcyIsIm1hcHBpbmdzIjoiQUFBYTs7QUFFYixXQUFXLGFBQWE7QUFDeEIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9wYXJrc2hhcmUtZnJvbnRlbmQvLi4vbm9kZV9tb2R1bGVzL2VzLW9iamVjdC1hdG9tcy9pbmRleC5qcz9iYzg5Il0sInNvdXJjZXNDb250ZW50IjpbIid1c2Ugc3RyaWN0JztcblxuLyoqIEB0eXBlIHtpbXBvcnQoJy4nKX0gKi9cbm1vZHVsZS5leHBvcnRzID0gT2JqZWN0O1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/../node_modules/es-object-atoms/index.js\n");
+eval("\n\n/** @type {import('.')} */\nmodule.exports = Object;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi4vbm9kZV9tb2R1bGVzL2VzLW9iamVjdC1hdG9tcy9pbmRleC5qcyIsIm1hcHBpbmdzIjoiQUFBYTs7QUFFYixXQUFXLGFBQWE7QUFDeEIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9wYXJrc2hhcmUtZnJvbnRlbmQvLi4vbm9kZV9tb2R1bGVzL2VzLW9iamVjdC1hdG9tcy9pbmRleC5qcz8xYmQ5Il0sInNvdXJjZXNDb250ZW50IjpbIid1c2Ugc3RyaWN0JztcblxuLyoqIEB0eXBlIHtpbXBvcnQoJy4nKX0gKi9cbm1vZHVsZS5leHBvcnRzID0gT2JqZWN0O1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/../node_modules/es-object-atoms/index.js\n");
 
 /***/ })
 

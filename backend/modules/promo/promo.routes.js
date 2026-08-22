@@ -1,15 +1,23 @@
 /**
  * Commercial Partner Mall Promo Code Engine
- * OWNER: Maidul Islam [MI]  ·  Mounted at /api/promo
- *
- * ⚠️ STUB — Maidul Islam replaces this file with their implementation.
- * Nobody else commits inside this folder.
+ * MODULE 3  ·  OWNER: Maidul Islam [MI]  ·  Mounted at /api/promo
  */
 const router = require('express').Router();
-const ApiError = require('../../utils/ApiError');
+const { authenticate, authorize, optionalAuth } = require('../../middleware/auth');
+const { ROLES } = require('../../shared/constants');
+const ctrl = require('./promo.controller');
 
-router.use((_req, _res, next) =>
-  next(ApiError.notImplemented('Commercial Partner Mall Promo Code Engine is not built yet — owner: Maidul Islam'))
-);
+/* public — the offers strip renders before sign-in */
+router.get('/active', optionalAuth, ctrl.listActive);
+
+/* driver */
+router.post('/validate', authenticate, authorize(ROLES.DRIVER, ROLES.ADMIN), ctrl.validate);
+router.post('/apply', authenticate, authorize(ROLES.DRIVER, ROLES.ADMIN), ctrl.apply);
+router.delete('/booking/:bookingId', authenticate, authorize(ROLES.DRIVER, ROLES.ADMIN), ctrl.remove);
+
+/* admin */
+router.get('/admin/codes', authenticate, authorize(ROLES.ADMIN), ctrl.listAll);
+router.post('/admin/codes', authenticate, authorize(ROLES.ADMIN), ctrl.createCode);
+router.patch('/admin/codes/:id', authenticate, authorize(ROLES.ADMIN), ctrl.updateCode);
 
 module.exports = router;
