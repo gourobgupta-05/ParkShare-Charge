@@ -1,0 +1,74 @@
+/* ==========================================================================
+   🔒 DESIGN TOKENS — DO NOT EDIT INDIVIDUALLY
+   Single source of truth for every colour in the app. tailwind.config.js maps
+   named utilities to these variables, so a palette change happens here once.
+   LIGHT MODE ONLY — do not add a .dark block.
+   ========================================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* -------------------------------------------------------------- brand -- */
+  --brand-primary: #10B981;          /* Electric Mint */
+  --brand-primary-hover: #059669;
+  --brand-primary-subtle: #ECFDF5;
+  --brand-secondary: #0F172A;        /* Deep Cyber Blue */
+  --brand-secondary-soft: #1E293B;
+  --brand-accent: #7C3AED;           /* Voltage Violet — mall / promo only */
+  --brand-accent-subtle: #F5F3FF;
+
+  /* ----------------------------------------------------------- surfaces -- */
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #F8FAFC;
+  --surface-inverse: #0F172A;
+
+  /* --------------------------------------------------------------- text -- */
+  --ink: #0F172A;
+  --ink-muted: #64748B;
+  --ink-subtle: #94A3B8;
+  --ink-inverse: #F8FAFC;
+  --ink-brand: #047857;   /* mint dark enough for body text on white (4.5:1) */
+
+  /* -------------------------------------------------------------- lines -- */
+  --line: #E2E8F0;
+  --line-strong: #CBD5E1;
+
+  /* ----------------------------------------------------------- feedback -- */
+  --success: #059669;  --success-subtle: #ECFDF5;  --success-fg: #065F46;
+  --warning: #D97706;  --warning-subtle: #FFFBEB;  --warning-fg: #92400E;
+  --danger:  #DC2626;  --danger-subtle:  #FEF2F2;  --danger-fg:  #991B1B;
+  --info:    #0284C7;  --info-subtle:    #F0F9FF;  --info-fg:    #075985;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-surface text-ink font-sans text-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+  /* Visible keyboard focus everywhere. Non-negotiable quality floor. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-primary ring-offset-2 ring-offset-surface;
+  }
+  /* Money, kWh, voltage — always aligned in columns. */
+  .numeric {
+    @apply font-mono tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* Respect the user's motion setting — kills the charge pulse too. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

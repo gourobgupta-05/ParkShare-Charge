@@ -1,0 +1,20 @@
+{
+  "name": "parkshare-charge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ParkShare & Charge — P2P + commercial smart parking and EV charging marketplace for Dhaka (CSE471)",
+  "workspaces": ["backend", "frontend"],
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "dev": "concurrently -n api,web -c green,cyan \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "dev:api": "npm run dev -w backend",
+    "dev:web": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w backend",
+    "check:tokens": "node scripts/check-tokens.mjs",
+    "setup": "npm install && node -e \"console.log('\\nNow copy backend/.env.example -> backend/.env and frontend/.env.local.example -> frontend/.env.local\\n')\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
