@@ -1,5 +1,5 @@
 {
+  "/register/driver/page": "app/register/driver/page.js",
   "/page": "app/page.js",
-  "/register/host/page": "app/register/host/page.js",
-  "/register/driver/page": "app/register/driver/page.js"
+  "/register/host/page": "app/register/host/page.js"
 }
