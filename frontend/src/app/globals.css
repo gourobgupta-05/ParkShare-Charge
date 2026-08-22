@@ -10,36 +10,36 @@
 
 :root {
   /* -------------------------------------------------------------- brand -- */
-  --brand-primary: #10B981;          /* Electric Mint */
-  --brand-primary-hover: #059669;
-  --brand-primary-subtle: #ECFDF5;
-  --brand-secondary: #0F172A;        /* Deep Cyber Blue */
-  --brand-secondary-soft: #1E293B;
-  --brand-accent: #7C3AED;           /* Voltage Violet — mall / promo only */
-  --brand-accent-subtle: #F5F3FF;
+  --brand-primary: rgb(16 185 129);          /* Electric Mint */
+  --brand-primary-hover: rgb(5 150 105);
+  --brand-primary-subtle: rgb(236 253 245);
+  --brand-secondary: rgb(15 23 42);          /* Deep Cyber Blue */
+  --brand-secondary-soft: rgb(30 41 59);
+  --brand-accent: rgb(124 58 237);          /* Voltage Violet — mall / promo only */
+  --brand-accent-subtle: rgb(245 243 255);
 
   /* ----------------------------------------------------------- surfaces -- */
-  --surface: #FFFFFF;
-  --surface-raised: #FFFFFF;
-  --surface-sunken: #F8FAFC;
-  --surface-inverse: #0F172A;
+  --surface: rgb(255 255 255);
+  --surface-raised: rgb(255 255 255);
+  --surface-sunken: rgb(248 250 252);
+  --surface-inverse: rgb(15 23 42);
 
   /* --------------------------------------------------------------- text -- */
-  --ink: #0F172A;
-  --ink-muted: #64748B;
-  --ink-subtle: #94A3B8;
-  --ink-inverse: #F8FAFC;
-  --ink-brand: #047857;   /* mint dark enough for body text on white (4.5:1) */
+  --ink: rgb(15 23 42);
+  --ink-muted: rgb(100 116 139);
+  --ink-subtle: rgb(148 163 184);
+  --ink-inverse: rgb(248 250 252);
+  --ink-brand: rgb(4 120 87);   /* mint dark enough for body text on white (4.5:1) */
 
   /* -------------------------------------------------------------- lines -- */
-  --line: #E2E8F0;
-  --line-strong: #CBD5E1;
+  --line: rgb(226 232 240);
+  --line-strong: rgb(203 213 225);
 
   /* ----------------------------------------------------------- feedback -- */
-  --success: #059669;  --success-subtle: #ECFDF5;  --success-fg: #065F46;
-  --warning: #D97706;  --warning-subtle: #FFFBEB;  --warning-fg: #92400E;
-  --danger:  #DC2626;  --danger-subtle:  #FEF2F2;  --danger-fg:  #991B1B;
-  --info:    #0284C7;  --info-subtle:    #F0F9FF;  --info-fg:    #075985;
+  --success: rgb(5 150 105);   --success-subtle: rgb(236 253 245);   --success-fg: rgb(6 95 70);
+  --warning: rgb(217 119 6);   --warning-subtle: rgb(255 251 235);   --warning-fg: rgb(146 64 14);
+  --danger:  rgb(220 38 38);   --danger-subtle:  rgb(254 242 242);   --danger-fg:  rgb(153 27 27);
+  --info:    rgb(2 132 199);   --info-subtle:    rgb(240 249 255);   --info-fg:    rgb(7 89 133);
 }
 
 @layer base {
