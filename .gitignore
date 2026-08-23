@@ -4,3 +4,7 @@ node_modules/
 
 backend/.env
 frontend/.env.local
+.next/
+node_modules/
+.next/
+node_modules/
