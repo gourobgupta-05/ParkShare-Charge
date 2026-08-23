@@ -1,15 +1,25 @@
 /**
  * Simulated IoT WebSocket Power Grid Broker
- * OWNER: Maidul Islam [MI]  ·  Mounted at /api/iot
+ * MODULE 2  ·  OWNER: Maidul Islam [MI]  ·  Mounted at /api/iot
  *
- * ⚠️ STUB — Maidul Islam replaces this file with their implementation.
- * Nobody else commits inside this folder.
+ * REST handles the session lifecycle and history; live telemetry goes over the
+ * /iot socket namespace, registered by realtime/index.js.
  */
 const router = require('express').Router();
-const ApiError = require('../../utils/ApiError');
+const { authenticate, authorize } = require('../../middleware/auth');
+const { ROLES } = require('../../shared/constants');
+const ctrl = require('./iot.controller');
 
-router.use((_req, _res, next) =>
-  next(ApiError.notImplemented('Simulated IoT WebSocket Power Grid Broker is not built yet — owner: Maidul Islam'))
-);
+router.use(authenticate);
+
+router.get('/broker-status', ctrl.brokerStatus);
+router.get('/host/energy-logs', authorize(ROLES.HOST, ROLES.ADMIN), ctrl.hostEnergyLogs);
+
+router.post('/sessions/:bookingId/start', ctrl.start);
+router.get('/sessions/:bookingId', ctrl.getSession);
+router.get('/sessions/:bookingId/readings', ctrl.getReadings);
+
+router.post('/sessions/:sessionId/pause', ctrl.pause);
+router.post('/sessions/:sessionId/stop', ctrl.stop);
 
 module.exports = router;

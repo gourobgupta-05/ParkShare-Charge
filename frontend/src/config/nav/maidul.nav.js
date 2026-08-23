@@ -1,9 +1,12 @@
 /**
  * Nav links owned by Maidul Islam [MI].
- * Add one entry per screen you build: { href, label, roles: [ROLES.DRIVER], owner: 'MI' }
  */
 import { ROLES } from '@/lib/constants';
 
-const links = [];
+const links = [
+  { href: '/chat', label: 'Messages', roles: [ROLES.DRIVER, ROLES.HOST], owner: 'MI' },
+  { href: '/host/energy', label: 'Energy logs', roles: [ROLES.HOST], owner: 'MI' },
+  { href: '/admin/promos', label: 'Promo codes', roles: [ROLES.ADMIN], owner: 'MI' },
+];
 
 export default links;
