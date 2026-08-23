@@ -1,9 +1,13 @@
 /**
  * Nav links owned by Gourob Gupta [GG].
- * Add one entry per screen you build: { href, label, roles: [ROLES.DRIVER], owner: 'GG' }
  */
 import { ROLES } from '@/lib/constants';
 
-const links = [];
+const links = [
+  { href: '/bookings', label: 'Bookings', roles: [ROLES.DRIVER, ROLES.HOST], owner: 'GG' },
+  { href: '/host/availability', label: 'Availability', roles: [ROLES.HOST], owner: 'GG' },
+  { href: '/host/reviews', label: 'Reviews', roles: [ROLES.HOST], owner: 'GG' },
+  { href: '/admin/tariffs', label: 'Electricity tariffs', roles: [ROLES.ADMIN], owner: 'GG' },
+];
 
 export default links;
