@@ -1,23 +1,15 @@
 /**
  * Dynamic BERC-Based Electricity Tariff Calculator
- * MODULE 3  ·  OWNER: Gourob Gupta [GG]  ·  Mounted at /api/tariff
+ * OWNER: Gourob Gupta [GG]  ·  Mounted at /api/tariff
+ *
+ * ⚠️ STUB — Gourob Gupta replaces this file with their implementation.
+ * Nobody else commits inside this folder.
  */
 const router = require('express').Router();
-const { authenticate, authorize, optionalAuth } = require('../../middleware/auth');
-const { ROLES } = require('../../shared/constants');
-const ctrl = require('./tariff.controller');
+const ApiError = require('../../utils/ApiError');
 
-/* public — drivers see the fare before signing in */
-router.get('/rates', ctrl.rates);
-router.post('/estimate', optionalAuth, ctrl.estimate);
-
-/* authenticated */
-router.post('/price/:bookingId', authenticate, ctrl.priceBooking);
-router.post('/finalize/:bookingId', authenticate, ctrl.finalize);
-
-/* admin — BERC slab management and the platform multiplier */
-router.get('/admin/rates', authenticate, authorize(ROLES.ADMIN), ctrl.listRateSets);
-router.post('/admin/rates', authenticate, authorize(ROLES.ADMIN), ctrl.publishRateSet);
-router.patch('/admin/multiplier', authenticate, authorize(ROLES.ADMIN), ctrl.setMultiplier);
+router.use((_req, _res, next) =>
+  next(ApiError.notImplemented('Dynamic BERC-Based Electricity Tariff Calculator is not built yet — owner: Gourob Gupta'))
+);
 
 module.exports = router;

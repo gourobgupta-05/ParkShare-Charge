@@ -12,7 +12,11 @@
     "build": "npm run build -w frontend",
     "start": "npm run start -w backend",
     "check:tokens": "node scripts/check-tokens.mjs",
-    "setup": "npm install && node -e \"console.log('\\nNow copy backend/.env.example -> backend/.env and frontend/.env.local.example -> frontend/.env.local\\n')\""
+    "setup": "npm install && node -e \"console.log('\\nNow copy backend/.env.example -> backend/.env and frontend/.env.local.example -> frontend/.env.local\\n')\"",
+    "check:artifacts": "node scripts/check-tracked-artifacts.mjs",
+    "check:foundation": "node scripts/verify-foundation.mjs",
+    "preflight": "npm run check:artifacts && npm run check:foundation && npm run check:tokens",
+    "predev": "npm run check:artifacts"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

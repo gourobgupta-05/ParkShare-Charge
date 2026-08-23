@@ -1,16 +1,15 @@
 /**
  * Automated PDF Invoice Engine with VAT Breakdown
- * MODULE 3  ·  OWNER: Gourob Gupta [GG]  ·  Mounted at /api/invoices
+ * OWNER: Gourob Gupta [GG]  ·  Mounted at /api/invoices
+ *
+ * ⚠️ STUB — Gourob Gupta replaces this file with their implementation.
+ * Nobody else commits inside this folder.
  */
 const router = require('express').Router();
-const { authenticate } = require('../../middleware/auth');
-const ctrl = require('./invoice.controller');
+const ApiError = require('../../utils/ApiError');
 
-router.use(authenticate); // invoices are private financial records
-
-router.get('/', ctrl.list);
-router.post('/generate/:bookingId', ctrl.generate);
-router.get('/:id', ctrl.detail);
-router.get('/:id/pdf', ctrl.downloadPdf);
+router.use((_req, _res, next) =>
+  next(ApiError.notImplemented('Automated PDF Invoice Engine with VAT Breakdown is not built yet — owner: Gourob Gupta'))
+);
 
 module.exports = router;
