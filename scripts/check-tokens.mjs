@@ -5,7 +5,7 @@
  * Four people picking four different greens is exactly what this prevents.
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, extname } from 'node:path';
+import path, { join, extname } from 'node:path';
 
 const ROOTS = ['frontend/src/features', 'frontend/src/app', 'frontend/src/components'];
 const ALLOWLIST = ['frontend/src/app/globals.css', 'frontend/src/lib/constants.js'];
@@ -35,7 +35,8 @@ function walk(dir, out = []) {
 const violations = [];
 for (const root of ROOTS) {
   for (const file of walk(root)) {
-    if (ALLOWLIST.some((a) => file.endsWith(a) || file.includes(a))) continue;
+    const rel = file.split(path.sep).join('/');
+    if (ALLOWLIST.some((a) => rel.endsWith(a))) continue;
     const lines = readFileSync(file, 'utf8').split('\n');
     lines.forEach((line, i) => {
       if (line.includes('token-lint-ignore')) return;
