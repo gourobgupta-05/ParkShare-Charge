@@ -1,15 +1,13 @@
 /**
  * Property Category Search Filter Toggle
- * OWNER: Tamal Deb Nath [TDN]  ·  Mounted at /api/filter
- *
- * ⚠️ STUB — Tamal Deb Nath replaces this file with their implementation.
- * Nobody else commits inside this folder.
+ * MODULE 2  ·  OWNER: Tamal Deb Nath [TDN]  ·  Mounted at /api/filter
  */
 const router = require('express').Router();
-const ApiError = require('../../utils/ApiError');
+const { optionalAuth } = require('../../middleware/auth');
+const ctrl = require('./propertyFilter.controller');
 
-router.use((_req, _res, next) =>
-  next(ApiError.notImplemented('Property Category Search Filter Toggle is not built yet — owner: Tamal Deb Nath'))
-);
+router.get('/properties', optionalAuth, ctrl.list);
+router.get('/counts', optionalAuth, ctrl.counts);
+router.get('/options', ctrl.options);
 
 module.exports = router;
