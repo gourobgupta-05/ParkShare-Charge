@@ -126,7 +126,7 @@ async function holdFunds({ bookingId, driverId, method = PAYMENT_METHOD.WALLET, 
         }
 
         /* ------------------------------------------------- 3. amount ---- */
-        const config = await PlatformConfig.current().session(session);
+        const config = await PlatformConfig.current();
         const breakdown = await resolveAmount(booking, property, config);
         const amountPoisha = breakdown.totalPoisha;
 
