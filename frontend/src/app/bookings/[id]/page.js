@@ -5,6 +5,11 @@
  * imported read-only from [TDN]. Other members' session panels slot in here
  * later without touching the [GG]-owned pieces.
  */
+import PromoCodeField from '@/features/promo/components/PromoCodeField';
+import GeofenceCheckInBanner from '@/features/geofence/components/GeofenceCheckInBanner';
+import ChargingSessionPanel from '@/features/iot-grid/components/ChargingSessionPanel';
+import ChatDrawer from '@/features/chat/components/ChatDrawer';
+import PenaltyCountdown from '@/features/penalty/components/PenaltyCountdown';
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -131,6 +136,34 @@ function BookingScreen() {
           </CardBody>
         </Card>
       )}
+
+      {isUnpaid && (
+  <Card>
+    <CardBody>
+      <PromoCodeField booking={booking} onApplied={load} />
+    </CardBody>
+  </Card>
+)}
+
+{[BOOKING_STATUS.CONFIRMED, BOOKING_STATUS.EN_ROUTE].includes(booking.status) && (
+  <>
+    <GeofenceCheckInBanner booking={booking} onCheckedIn={load} />
+    <Link href={`/navigate/${booking._id}`}>
+      <Button variant="outline" fullWidth>Navigate to the entrance</Button>
+    </Link>
+  </>
+)}
+
+{[BOOKING_STATUS.ACTIVE, BOOKING_STATUS.OVERSTAY].includes(booking.status) && (
+  <>
+    <ChargingSessionPanel booking={booking} />
+    <PenaltyCountdown booking={booking} onCheckedOut={load} />
+  </>
+)}
+
+{booking.status !== BOOKING_STATUS.PENDING_PAYMENT && (
+  <ChatDrawer bookingId={booking._id} counterpartyName={booking.hostId?.businessName || booking.hostId?.name} />
+)}
 
       {isUnpaid && (
         <Button variant="ghost" onClick={cancel} isLoading={busy} className="self-start">
