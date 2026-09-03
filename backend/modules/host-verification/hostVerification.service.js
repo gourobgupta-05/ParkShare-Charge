@@ -264,7 +264,7 @@ async function submit(hostId) {
   verification.rejectionReason = null;
   await verification.save();
 
-  await User.updateOne({ _id: hostId }, { $set: { verificationStatus: VERIFICATION_STATUS.SUBMITTED } });
+  await Host.updateOne({ _id: hostId }, { $set: { verificationStatus: VERIFICATION_STATUS.SUBMITTED } });
 
   notify({
     userId: hostId,
@@ -349,7 +349,7 @@ async function approve({ verificationId, adminId, notes }) {
       verification.nid.isVerified = true;
       await verification.save({ session });
 
-      await User.updateOne(
+      await Host.updateOne(
         { _id: verification.hostId },
         { $set: { verificationStatus: VERIFICATION_STATUS.APPROVED, verifiedAt: new Date() } },
         { session }
@@ -394,7 +394,7 @@ async function reject({ verificationId, adminId, reason }) {
       verification.rejectionCount += 1;
       await verification.save({ session });
 
-      await User.updateOne(
+      await Host.updateOne(
         { _id: verification.hostId },
         { $set: { verificationStatus: VERIFICATION_STATUS.REJECTED } },
         { session }
