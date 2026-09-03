@@ -6,6 +6,7 @@
 import { Manrope, Inter, JetBrains_Mono } from 'next/font/google';
 import { AuthProvider } from '@/context/AuthContext';
 import './globals.css';
+import Navbar from '@/components/Navbar';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -35,7 +36,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
