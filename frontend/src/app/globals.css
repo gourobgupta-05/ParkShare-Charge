@@ -19,9 +19,9 @@
   --brand-accent-subtle: #F5F3FF;
 
   /* ----------------------------------------------------------- surfaces -- */
-  --surface: #FFFFFF;
+  --surface: #F6F8FA;
   --surface-raised: #FFFFFF;
-  --surface-sunken: #F8FAFC;
+  --surface-sunken: #EDF1F5;
   --surface-inverse: #0F172A;
 
   /* --------------------------------------------------------------- text -- */
@@ -32,14 +32,18 @@
   --ink-brand: #047857;   /* mint dark enough for body text on white (4.5:1) */
 
   /* -------------------------------------------------------------- lines -- */
-  --line: #E2E8F0;
-  --line-strong: #CBD5E1;
+  --line: #E4E9EF;
+  --line-strong: #C7D0DA; 
 
   /* ----------------------------------------------------------- feedback -- */
   --success: #059669;  --success-subtle: #ECFDF5;  --success-fg: #065F46;
   --warning: #D97706;  --warning-subtle: #FFFBEB;  --warning-fg: #92400E;
   --danger:  #DC2626;  --danger-subtle:  #FEF2F2;  --danger-fg:  #991B1B;
   --info:    #0284C7;  --info-subtle:    #F0F9FF;  --info-fg:    #075985;
+
+  --shadow-1: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
+  --shadow-2: 0 2px 4px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.08);
+  --shadow-3: 0 8px 16px rgb(15 23 42 / 0.06), 0 16px 40px rgb(15 23 42 / 0.10);
 }
 
 @layer base {
