@@ -1,6 +1,6 @@
 'use client';
 /** 🔒 Sign-in — Common Feature 1. One form for every role. */
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth, HOME_BY_ROLE } from '@/context/AuthContext';
@@ -9,7 +9,7 @@ import Input from '@/components/ui/Input';
 import Alert from '@/components/ui/Alert';
 import Card, { CardBody } from '@/components/ui/Card';
 
-export default function LoginPage() {
+function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
@@ -56,5 +56,13 @@ export default function LoginPage() {
         <Link href="/register/host" className="text-ink-brand underline">List a space</Link>
       </p>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-ink-muted">Loading…</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
